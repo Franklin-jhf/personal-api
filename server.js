@@ -34,7 +34,9 @@ app.post('/api/family', mainCtrl.addFamilyMem);
 app.post('/api/restaurants', mainCtrl.addRestaurant);
 
 app.get('/api/skillz', mainCtrl.getSkillz);
-app.post('/api/skillz', mainCtrl.addSkill);
+app.post('/api/skillz', middleware.generateId, mainCtrl.postSkillz);
+
+app.get('/secrets/:username/:pin', middleware.verifyUser, mainCtrl.getSecrets);
 
 
 app.listen(3000, () => {

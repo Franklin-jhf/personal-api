@@ -1,5 +1,6 @@
 var user = require('../user.js');
 let skillz = require('../skillz.js');
+const secrets = require('../secrets.js');
 
 
 module.exports = {
@@ -142,5 +143,12 @@ module.exports = {
 			res.json(filtered);
 		}
 		res.status(200).json(skillz);
+	},
+	postSkillz: (req, res, next) => {
+		skillz.push(req.body);
+		return res.status(200).json(skillz);
+	},
+	getSecrets: (req, res, next) => {
+		return  res.status(200).json(secrets);
 	}
 }
